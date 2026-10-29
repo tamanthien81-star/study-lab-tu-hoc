@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Khám phá kỹ năng tự học, phương pháp học hiệu quả, đường cong quên và RemNote qua một website học tập tương tác.">
+<title>StudyLab — Tự học thông minh</title>
+<style>
+:root{--navy:#14213d;--blue:#3157d5;--teal:#20a38a;--ink:#263247;--muted:#65728a;--paper:#f6f8fc;--line:#e4e9f2;--gold:#f2b84b}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:850;color:var(--navy);letter-spacing:-.5px;font-size:1.1rem}.logo span{color:var(--blue)}
+nav{display:flex;gap:20px;flex-wrap:wrap;font-size:.88rem;color:#4b5870}nav a:hover{color:var(--blue)}
+.hero{background:radial-gradient(circle at 85% 15%,#dce7ff 0,transparent 30%),linear-gradient(135deg,#f4f7ff,#fff 65%);padding:82px 22px 70px}
+.hero-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{color:var(--blue);font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:1.7px}
+h1{font-size:clamp(2.5rem,5vw,4.6rem);line-height:1.06;letter-spacing:-2.5px;color:var(--navy);margin:15px 0 20px}
+h1 em{font-style:normal;color:var(--blue)}.hero p{font-size:1.12rem;color:#53617a;max-width:620px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:750;font-size:.94rem}.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px #3157d52b}.secondary{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.hero-card{background:#fff;border:1px solid #e7ebf5;border-radius:24px;padding:26px;box-shadow:0 24px 70px #21365e12;transform:rotate(1deg)}
+.hero-card .mini-title{font-weight:800;color:var(--navy);font-size:1.08rem}.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{background:var(--paper);border-radius:14px;padding:14px 10px;text-align:center}.stat strong{display:block;color:var(--blue);font-size:1.5rem}.stat span{font-size:.76rem;color:var(--muted)}
+.progress{height:9px;background:#e8edf8;border-radius:20px;overflow:hidden;margin:9px 0 15px}.progress div{height:100%;width:76%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:20px}
+section{padding:76px 22px}.container{max-width:1120px;margin:auto}.section-head{max-width:720px;margin-bottom:32px}.section-head h2{font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-1px;color:var(--navy);margin:8px 0 13px}.section-head p{color:var(--muted);margin:0}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:1.4px;color:var(--teal);font-weight:850}
+.definition{background:var(--navy);color:white;border-radius:22px;padding:30px 32px;font-size:1.2rem;position:relative;overflow:hidden}.definition:after{content:"“";position:absolute;font-size:12rem;line-height:1;right:20px;top:-20px;color:#ffffff0d;font-family:Georgia}.definition strong{color:#91e5d3}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:23px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 28px #1c31520a}.icon{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:#edf1ff;font-size:1.35rem;margin-bottom:14px}.card h3{margin:0 0 8px;color:var(--navy);font-size:1.12rem}.card p,.card li{font-size:.94rem;color:var(--muted)}.card ul{padding-left:19px;margin-bottom:0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}.good{border-top:4px solid var(--teal)}.bad{border-top:4px solid #e79b62}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:20px;border-radius:16px;background:var(--paper);border:1px solid var(--line)}.step:before{counter-increment:step;content:"0" counter(step);display:block;font-size:1.5rem;font-weight:900;color:var(--blue);margin-bottom:12px}.step h3{font-size:1rem;margin:0 0 7px;color:var(--navy)}.step p{font-size:.9rem;color:var(--muted);margin:0}
+.alt{background:var(--paper)}
+.chart-wrap{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 12px 32px #1c31520a}
+.chart-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}.chart-top h3{margin:0;color:var(--navy)}.chart-top p{color:var(--muted);margin:5px 0 0;font-size:.9rem}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--blue)}.dot.teal{background:var(--teal)}
+svg{width:100%;height:auto;display:block;margin-top:10px}.chart-note{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.note{background:#f6f8fc;border-radius:12px;padding:13px}.note strong{display:block;color:var(--navy);font-size:.92rem}.note span{color:var(--muted);font-size:.82rem}
+.callout{padding:20px 22px;border-left:4px solid var(--gold);background:#fff8e8;border-radius:0 14px 14px 0;margin-top:18px;color:#5d4a25;font-size:.94rem}
+.remnote{background:linear-gradient(135deg,#14213d,#233e73);color:white;border-radius:24px;padding:32px;display:grid;grid-template-columns:1fr .8fr;gap:30px;align-items:center}
+.remnote h2{font-size:2.2rem;line-height:1.15;margin:10px 0}.remnote p{color:#d6deef}.remnote .kicker{color:#8fe0cf}
+.rem-box{background:#fff;color:var(--ink);padding:21px;border-radius:18px}.rem-box h3{margin:0 0 12px;color:var(--navy)}.flash{padding:12px 13px;border:1px solid var(--line);border-radius:10px;margin:9px 0;background:#fbfcff}.flash small{display:block;color:var(--muted);font-size:.76rem}.flash strong{color:var(--blue)}
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px}.check{display:flex;gap:10px;padding:15px;border:1px solid var(--line);border-radius:13px;background:white}.check b{color:var(--teal)}
+footer{background:#101b32;color:#c6d0e4;padding:32px 22px;text-align:center;font-size:.9rem}footer strong{color:#fff}
+.small{font-size:.82rem;color:var(--muted)}.toplink{display:inline-block;margin-top:18px;color:var(--blue);font-weight:750}
+@media(max-width:800px){.hero-inner,.remnote{grid-template-columns:1fr}.hero{padding-top:55px}.grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}nav{gap:10px;font-size:.8rem}.hero-card{transform:none}}
+@media(max-width:560px){nav{display:none}.grid,.two-col,.chart-note,.checklist{grid-template-columns:1fr}.hero{padding-left:18px;padding-right:18px}section{padding:56px 18px}.definition{padding:24px}.remnote{padding:24px}.stat strong{font-size:1.2rem}.chart-wrap{padding:14px}}
+
+/* StudyLab visual upgrade */
+:root{--navy:#101a35;--blue:#4b63e6;--teal:#12a88a;--paper:#f5f7ff;--line:#e3e8f5}
+body{background:#fcfdff;letter-spacing:-.12px}
+header{box-shadow:0 5px 24px rgba(16,26,53,.045)}
+.logo{display:flex;align-items:center;gap:9px;font-size:1.13rem;letter-spacing:-.7px}
+.logo-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#4b63e6,#12a88a);color:#fff;font-size:1.1rem}
+.logo span:last-child{color:var(--blue)}
+nav a{font-weight:650;position:relative;padding:7px 0}
+nav a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--teal);transition:right .2s}
+nav a:hover:after{right:0}
+.menu-toggle{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:8px 11px;font-size:1.1rem;color:var(--navy)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 85% 22%,rgba(75,99,230,.17),transparent 33%),radial-gradient(ellipse at 65% 95%,rgba(18,168,138,.11),transparent 32%),linear-gradient(135deg,#f5f7ff,#fff 65%)}
+.hero:before{content:"";position:absolute;z-index:-1;width:360px;height:360px;border:1px solid rgba(75,99,230,.12);border-radius:50%;right:-120px;bottom:-190px;box-shadow:0 0 0 35px rgba(75,99,230,.025),0 0 0 70px rgba(75,99,230,.025)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:30px;background:#e9edff}
+.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+h1{letter-spacing:-3px}
+.hero p{line-height:1.8}
+.hero-card{transform:none;position:relative}
+.hero-card:before{content:"";position:absolute;inset:-7px;border:1px solid rgba(75,99,230,.13);border-radius:29px;z-index:-1;transform:rotate(3deg)}
+.stat{transition:transform .2s,background .2s}.stat:hover{transform:translateY(-3px);background:#eef2ff}
+.btn{transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-2px)}
+.primary:hover{box-shadow:0 12px 26px #3157d53d}
+section{scroll-margin-top:76px}
+.section-head{margin-bottom:35px}
+.section-head h2{letter-spacing:-1.5px}
+.card{transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 34px #1c315214;border-color:#d4dcf5}
+.icon{font-size:1.25rem;box-shadow:inset 0 0 0 1px rgba(75,99,230,.035)}
+.definition{background:linear-gradient(120deg,#101a35,#243d76);box-shadow:0 18px 40px #101a3519}
+.step{transition:transform .2s,background .2s}.step:hover{transform:translateY(-3px);background:#edf1ff}
+.chart-wrap{box-shadow:0 18px 44px #1c31520a}
+.remnote{box-shadow:0 24px 55px #101a351c;position:relative;overflow:hidden}
+.remnote:after{content:"R";position:absolute;right:33%;top:-100px;font-size:24rem;font-weight:900;color:#ffffff08;pointer-events:none}
+.remnote>*{position:relative;z-index:1}
+.interactive-panel{margin-top:32px;padding:25px;border-radius:20px;background:linear-gradient(135deg,#edf1ff,#f1fbf8);border:1px solid #e0e7f7}
+.interactive-panel h3{margin:0 0 7px;color:var(--navy);font-size:1.25rem}
+.quiz-question{font-weight:750;color:var(--navy);margin:15px 0 10px}
+.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.quiz-option{border:1px solid #dbe2f3;border-radius:12px;background:white;padding:12px 14px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;transition:.15s}
+.quiz-option:hover{border-color:var(--blue);background:#f9faff}
+.quiz-option.correct{border-color:#12a88a;background:#e8faf5}.quiz-option.wrong{border-color:#e79b62;background:#fff4e8}
+#quizFeedback{font-weight:700;margin-top:12px;min-height:26px}
+.timer-card{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:20px;padding:20px 22px;background:white;border:1px solid var(--line);border-radius:16px}
+.timer-time{font-size:2rem;font-weight:850;letter-spacing:-1px;color:var(--blue);font-variant-numeric:tabular-nums}
+.timer-controls{display:flex;gap:8px;flex-wrap:wrap}.timer-controls button{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;font-weight:750;cursor:pointer;color:var(--navy)}.timer-controls button:first-child{background:var(--blue);color:#fff;border-color:var(--blue)}
+footer{background:radial-gradient(ellipse at top,#203665,#101b32 65%)}
+@media(max-width:800px){.menu-toggle{display:block}nav#mainNav{display:none;position:absolute;top:60px;left:16px;right:16px;padding:15px;background:white;border:1px solid var(--line);border-radius:14px;box-shadow:0 15px 35px #101a3518;flex-direction:column;gap:8px}nav#mainNav.open{display:flex}.nav{position:relative}.hero-inner{gap:34px}}
+@media(max-width:560px){.quiz-options{grid-template-columns:1fr}.timer-card{align-items:flex-start}.timer-time{font-size:1.8rem}.hero h1{letter-spacing:-2px}}
+
+</style>
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="#home"><span class="logo-mark">✳</span> Study<span>Lab</span></a><button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">☰</button><nav id="mainNav"><a href="#khainiem">Khái niệm</a><a href="#phuongphap">Phương pháp</a><a href="#uu-nhuoc">Ưu & nhược</a><a href="#duongcong">Đường cong quên</a><a href="#remnote">RemNote</a></nav></div></header>
+<main id="home">
+<section class="hero"><div class="hero-inner">
+<div><div class="eyebrow">Kỹ năng tự học · Học tập suốt đời</div><h1>Học chủ động.<br><em>Nhớ lâu hơn.</em></h1><p>Tự học không có nghĩa là học một mình. Đó là quá trình chủ động xác định mục tiêu, tìm hiểu kiến thức, tự kiểm tra và điều chỉnh cách học để tiến bộ mỗi ngày.</p><div class="actions"><a class="btn primary" href="#khainiem">Khám phá cách tự học ↘</a><a class="btn secondary" href="#duongcong">Tìm hiểu đường cong quên</a></div></div>
+<div class="hero-card"><div class="mini-title">Một chu trình học hiệu quả</div><div class="stat-row"><div class="stat"><strong>01</strong><span>Học mới</span></div><div class="stat"><strong>02</strong><span>Tự nhớ lại</span></div><div class="stat"><strong>03</strong><span>Ôn tập</span></div></div><p class="small">Không chỉ đọc lại — hãy thử tự trả lời câu hỏi trước khi xem đáp án.</p><div class="progress"><div></div></div><div style="display:flex;justify-content:space-between;font-size:.82rem;color:#65728a"><span>Tiến bộ đến từ sự đều đặn</span><strong style="color:#3157d5">Mỗi ngày</strong></div></div>
+</div></section>
+<section id="khainiem"><div class="container"><div class="section-head"><div class="kicker">01 · Hiểu đúng</div><h2>Tự học là gì?</h2><p>Nắm rõ bản chất để biến việc học thành quá trình có mục tiêu và có thể tự điều chỉnh.</p></div><div class="definition"><strong>Tự học</strong> là quá trình người học chủ động, tự giác và có mục đích trong việc tìm kiếm, tiếp nhận, xử lý, ghi nhớ và vận dụng kiến thức; đồng thời tự đánh giá kết quả để điều chỉnh phương pháp học tập.</div><div class="grid" style="margin-top:18px"><article class="card"><div class="icon">🎯</div><h3>Chủ động mục tiêu</h3><p>Biết mình cần học gì, vì sao cần học và kết quả mong muốn là gì.</p></article><article class="card"><div class="icon">🔎</div><h3>Tự tìm hiểu</h3><p>Sử dụng giáo trình, bài giảng, tài liệu đáng tin cậy và trao đổi khi chưa hiểu.</p></article><article class="card"><div class="icon">🔁</div><h3>Tự đánh giá</h3><p>Kiểm tra khả năng nhớ và vận dụng, nhận ra lỗ hổng rồi điều chỉnh kế hoạch.</p></article></div></div></section>
+<section id="phuongphap" class="alt"><div class="container"><div class="section-head"><div class="kicker">02 · Công cụ học tập</div><h2>Một số phương pháp tự học</h2><p>Không có một phương pháp phù hợp với tất cả mọi người. Có thể kết hợp nhiều cách tùy mục tiêu và nội dung học.</p></div><div class="grid">
+<article class="card"><div class="icon">🗓️</div><h3>1. Lập kế hoạch</h3><p>Chia mục tiêu lớn thành nhiệm vụ nhỏ, xác định thời gian học và thời điểm ôn tập.</p></article>
+<article class="card"><div class="icon">🧠</div><h3>2. Chủ động nhớ lại</h3><p>Đóng tài liệu và tự trả lời câu hỏi, giải thích bằng lời của mình hoặc làm bài tập.</p></article>
+<article class="card"><div class="icon">⏳</div><h3>3. Lặp lại ngắt quãng</h3><p>Ôn lại kiến thức qua nhiều lần cách nhau theo thời gian, thay vì học dồn một lần.</p></article>
+<article class="card"><div class="icon">🗂️</div><h3>4. Sơ đồ tư duy & ghi chú</h3><p>Hệ thống hóa ý chính, làm rõ mối liên hệ giữa khái niệm và ví dụ.</p></article>
+<article class="card"><div class="icon">👥</div><h3>5. Học nhóm</h3><p>Giải thích cho nhau, thảo luận câu hỏi và bổ sung những phần còn chưa hiểu.</p></article>
+<article class="card"><div class="icon">🧪</div><h3>6. Luyện tập & vận dụng</h3><p>Làm câu hỏi, bài tập tình huống hoặc áp dụng kiến thức vào vấn đề thực tế.</p></article>
+</div><div class="callout"><strong>Gợi ý:</strong> Sau khi học một phần, hãy thử tự nhớ lại trước; sau đó mới mở tài liệu để kiểm tra và sửa chỗ sai.</div></div></section>
+<section id="uu-nhuoc"><div class="container"><div class="section-head"><div class="kicker">03 · Nhìn nhận cân bằng</div><h2>Ưu điểm và hạn chế của tự học</h2><p>Tự học phát huy hiệu quả khi người học có kế hoạch, kỷ luật và biết tìm hỗ trợ đúng lúc.</p></div><div class="two-col"><article class="card good"><div class="icon">✓</div><h3>Ưu điểm</h3><ul><li>Phát huy tính chủ động, tự giác và trách nhiệm với việc học.</li><li>Điều chỉnh tốc độ, thời gian và phương pháp theo nhu cầu cá nhân.</li><li>Rèn tư duy độc lập, khả năng tìm kiếm và giải quyết vấn đề.</li><li>Ghi nhớ sâu hơn khi kết hợp tự kiểm tra và ôn tập định kỳ.</li><li>Hình thành năng lực học tập suốt đời.</li></ul></article><article class="card bad"><div class="icon">!</div><h3>Hạn chế / khó khăn</h3><ul><li>Dễ trì hoãn hoặc mất động lực nếu thiếu kỷ luật.</li><li>Có thể hiểu sai kiến thức khi không có phản hồi kịp thời.</li><li>Tốn thời gian chọn lọc tài liệu và xác định nội dung trọng tâm.</li><li>Dễ học lệch hoặc quá tải nếu lập kế hoạch chưa hợp lý.</li><li>Ít cơ hội trao đổi trực tiếp nếu chỉ học một mình.</li></ul></article></div><div class="section-head" style="margin-top:42px;margin-bottom:20px"><h2 style="font-size:1.55rem">Bốn bước xây dựng buổi tự học</h2></div><div class="steps"><div class="step"><h3>Xác định mục tiêu</h3><p>Viết rõ phần cần học và kết quả cần đạt.</p></div><div class="step"><h3>Học có chọn lọc</h3><p>Đọc hiểu ý chính, ghi chú và liên hệ kiến thức.</p></div><div class="step"><h3>Tự kiểm tra</h3><p>Đóng tài liệu, tự trả lời hoặc làm câu hỏi.</p></div><div class="step"><h3>Ôn & điều chỉnh</h3><p>Ôn lại theo lịch, sửa lỗi và cập nhật kế hoạch.</p></div></div></div></section>
+<section id="duongcong" class="alt"><div class="container"><div class="section-head"><div class="kicker">04 · Vì sao cần ôn tập?</div><h2>Đường cong quên: quên là điều tự nhiên</h2><p>Kiến thức có thể phai nhạt theo thời gian nếu không được gợi nhớ hoặc sử dụng. Ôn tập đúng lúc giúp củng cố trí nhớ và làm chậm quá trình quên.</p></div><div class="chart-wrap"><div class="chart-top"><div><h3>Minh họa sự suy giảm và phục hồi khả năng nhớ</h3><p>Đường cong mang tính minh họa, không phải tỷ lệ quên chính xác cho mọi người.</p></div><div class="legend"><span><i class="dot"></i> Không ôn tập</span><span><i class="dot teal"></i> Có ôn tập</span></div></div>
+<svg viewBox="0 0 760 360" role="img" aria-label="Biểu đồ đường cong quên và ôn tập lặp lại ngắt quãng">
+<defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#20a38a" stop-opacity=".18"/><stop offset="1" stop-color="#20a38a" stop-opacity="0"/></linearGradient></defs>
+<g stroke="#e6ebf3" stroke-width="1"><line x1="72" y1="45" x2="710" y2="45"/><line x1="72" y1="105" x2="710" y2="105"/><line x1="72" y1="165" x2="710" y2="165"/><line x1="72" y1="225" x2="710" y2="225"/><line x1="72" y1="285" x2="710" y2="285"/></g>
+<g stroke="#9aa7bb" stroke-width="1.5"><line x1="72" y1="30" x2="72" y2="285"/><line x1="72" y1="285" x2="710" y2="285"/></g>
+<g fill="#68758b" font-size="12" text-anchor="end"><text x="61" y="49">100%</text><text x="61" y="109">75%</text><text x="61" y="169">50%</text><text x="61" y="229">25%</text><text x="61" y="289">0%</text></g>
+<g fill="#68758b" font-size="12" text-anchor="middle"><text x="72" y="309">Ngày 0</text><text x="150" y="309">1</text><text x="270" y="309">5</text><text x="405" y="309">12</text><text x="555" y="309">22</text><text x="700" y="309">Thời gian →</text></g>
+<text x="18" y="160" transform="rotate(-90 18 160)" fill="#68758b" font-size="12" text-anchor="middle">Khả năng nhớ</text>
+<path d="M72 45 C95 90 112 151 150 190 S220 248 270 257 S365 273 405 276 S520 282 555 283 S660 285 700 285" fill="none" stroke="#3157d5" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M72 45 C95 90 112 151 150 190 L150 45 C180 82 222 139 270 175 L270 45 C300 78 360 130 405 160 L405 45 C445 76 500 116 555 140 L555 45 C590 72 645 93 700 105 L700 285 L72 285Z" fill="url(#area)" opacity=".0"/>
+<path d="M72 45 C94 88 112 145 150 180 L150 45 C181 78 225 124 270 151 L270 45 C304 75 360 108 405 127 L405 45 C445 72 502 96 555 110 L555 45 C596 68 650 80 700 87" fill="none" stroke="#20a38a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#20a38a" stroke="white" stroke-width="2"><circle cx="72" cy="45" r="5"/><circle cx="150" cy="45" r="5"/><circle cx="270" cy="45" r="5"/><circle cx="405" cy="45" r="5"/><circle cx="555" cy="45" r="5"/></g>
+<g fill="#177e6c" font-size="11" font-weight="700"><text x="83" y="34">Học mới</text><text x="150" y="31" text-anchor="middle">Ôn 1</text><text x="270" y="31" text-anchor="middle">Ôn 2</text><text x="405" y="31" text-anchor="middle">Ôn 3</text><text x="555" y="31" text-anchor="middle">Ôn 4</text></g>
+</svg>
+<div class="chart-note"><div class="note"><strong>Ngày 0 · Học mới</strong><span>Hiểu và ghi nhớ kiến thức lần đầu.</span></div><div class="note"><strong>Ngày 1 · Ôn lần 1</strong><span>Gợi nhớ lại trước khi xem đáp án.</span></div><div class="note"><strong>Ngày 5, 12, 22 · Ôn tiếp</strong><span>Củng cố dần; điều chỉnh lịch theo mức độ khó.</span></div></div></div>
+<div class="callout"><strong>Thông điệp chính:</strong> Quên không có nghĩa là học thất bại. Điều quan trọng là chủ động quay lại với kiến thức, cố gắng nhớ trước khi xem tài liệu và lặp lại sau những khoảng thời gian phù hợp. Lịch ngày 0–1–5–12–22 chỉ là ví dụ để bắt đầu, không phải công thức bắt buộc.</div></div></section>
+<section id="remnote"><div class="container"><div class="remnote"><div><div class="kicker">05 · Công cụ hỗ trợ</div><h2>RemNote — ghi chú kết hợp flashcard</h2><p>RemNote là công cụ học tập giúp kết hợp ghi chú kiến thức với thẻ ghi nhớ (flashcard) và lịch ôn tập lặp lại ngắt quãng. Thay vì chỉ đọc lại trang vở, bạn có thể luyện khả năng tự nhớ và theo dõi những nội dung cần ôn.</p><p><strong>Ví dụ:</strong> Ghi câu hỏi “Tự học là gì?” và đặt câu trả lời ở mặt sau. Khi ôn, hãy tự trả lời trước rồi mới mở đáp án.</p><a class="btn" style="background:#fff;color:#203b70;margin-top:8px" href="https://www.remnote.com/" target="_blank" rel="noopener">Tìm hiểu RemNote ↗</a></div><div class="rem-box"><h3>Ví dụ thẻ ghi nhớ</h3><div class="flash"><small>CÂU HỎI</small><strong>Đường cong quên cho chúng ta biết điều gì?</strong></div><div class="flash"><small>GỢI Ý TRẢ LỜI</small>Thông tin có thể phai nhạt theo thời gian nếu không được ôn hoặc sử dụng.</div><div class="flash"><small>CÂU HỎI</small><strong>Trước khi lật thẻ, nên làm gì?</strong></div><div class="flash"><small>GỢI Ý TRẢ LỜI</small>Cố gắng tự nhớ và trả lời, sau đó mới kiểm tra đáp án.</div></div></div>
+<div class="section-head" style="margin-top:48px"><h2 style="font-size:1.7rem">RemNote có gì hữu ích?</h2></div><div class="grid"><article class="card"><div class="icon">📝</div><h3>Ghi chú có cấu trúc</h3><p>Sắp xếp nội dung theo chủ đề và phân cấp ý chính — ý phụ.</p></article><article class="card"><div class="icon">🃏</div><h3>Tạo flashcard</h3><p>Chuyển kiến thức thành câu hỏi ngắn để luyện chủ động nhớ lại.</p></article><article class="card"><div class="icon">🔔</div><h3>Ôn tập theo lịch</h3><p>Hỗ trợ sắp xếp thẻ cần ôn, giúp việc ôn tập đều đặn hơn.</p></article></div>
+<div class="callout"><strong>Lưu ý:</strong> RemNote là công cụ hỗ trợ, không thay thế việc hiểu bài, luyện bài tập hay thực hành. Flashcard nên ngắn, rõ ý và kiểm tra một kiến thức trọng tâm mỗi lần.</div></div></section>
+<section><div class="container"><div class="section-head"><div class="kicker">06 · Học bằng cách thực hành</div><h2>Thử thách nhanh: bạn nhớ được gì?</h2><p>Trả lời câu hỏi mà không xem lại phần lý thuyết. Đây cũng là một ví dụ nhỏ về phương pháp chủ động nhớ lại.</p></div>
+<div class="interactive-panel"><h3>Kiểm tra kiến thức</h3><div class="small">Câu 1 / 1 · Chọn một đáp án</div><div class="quiz-question">Cách nào phù hợp nhất để kiểm tra xem bạn thực sự nhớ bài?</div><div class="quiz-options"><button class="quiz-option" data-correct="false">Đọc đi đọc lại tài liệu nhiều lần</button><button class="quiz-option" data-correct="true">Đóng tài liệu và tự trả lời câu hỏi</button><button class="quiz-option" data-correct="false">Tô màu tất cả các đoạn văn</button><button class="quiz-option" data-correct="false">Chỉ học lại ngay trước kỳ thi</button></div><div id="quizFeedback" aria-live="polite"></div></div>
+<div class="timer-card"><div><div class="kicker">Pomodoro · Tập trung học</div><strong>Thử một phiên học 25 phút</strong><div class="small">Chọn nhiệm vụ, tắt xao nhãng và bắt đầu.</div></div><div class="timer-time" id="timerDisplay">25:00</div><div class="timer-controls"><button id="timerStart">Bắt đầu</button><button id="timerReset">Đặt lại</button></div></div>
+</div></section>
+<section class="alt"><div class="container"><div class="section-head"><div class="kicker">07 · Bắt đầu ngay</div><h2>Một buổi tự học gợi ý</h2><p>Thử áp dụng chu trình đơn giản này cho một bài học bất kỳ.</p></div><div class="checklist"><div class="check"><b>✓</b><div><strong>5 phút — Đặt mục tiêu</strong><div class="small">Chọn một phần kiến thức cụ thể cần hoàn thành.</div></div></div><div class="check"><b>✓</b><div><strong>25 phút — Học tập trung</strong><div class="small">Đọc hiểu, ghi chú ý chính, hạn chế xao nhãng.</div></div></div><div class="check"><b>✓</b><div><strong>10 phút — Tự kiểm tra</strong><div class="small">Đóng tài liệu, trả lời câu hỏi hoặc làm bài tập.</div></div></div><div class="check"><b>✓</b><div><strong>5 phút — Lên lịch ôn</strong><div class="small">Ghi lại phần chưa chắc và hẹn thời điểm xem lại.</div></div></div></div><a class="toplink" href="#home">↑ Quay lại đầu trang</a></div></section>
+</main>
+<footer><strong>TỰ HỌC.</strong> · Chủ động hôm nay, vững vàng ngày mai.<br><span>Trang web phục vụ bài tập môn Kỹ năng tự học.</span></footer>
+
+<script>
+(function(){
+  const menuToggle=document.getElementById('menuToggle');
+  const mainNav=document.getElementById('mainNav');
+  if(menuToggle && mainNav){
+    menuToggle.addEventListener('click',()=>{
+      const open=mainNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded',String(open));
+      menuToggle.textContent=open?'✕':'☰';
+    });
+    mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded','false');
+      menuToggle.textContent='☰';
+    }));
+  }
+  const options=[...document.querySelectorAll('.quiz-option')];
+  const feedback=document.getElementById('quizFeedback');
+  options.forEach(option=>option.addEventListener('click',()=>{
+    options.forEach(o=>{o.classList.remove('correct','wrong');o.disabled=true;});
+    if(option.dataset.correct==='true'){
+      option.classList.add('correct');
+      feedback.textContent='Chính xác! Tự nhớ lại giúp bạn kiểm tra khả năng truy xuất kiến thức, thay vì chỉ cảm thấy quen thuộc khi đọc.';
+      feedback.style.color='#087c66';
+    }else{
+      option.classList.add('wrong');
+      const right=options.find(o=>o.dataset.correct==='true');
+      right.classList.add('correct');
+      feedback.textContent='Chưa đúng. Đáp án phù hợp là: đóng tài liệu và tự trả lời câu hỏi. Hãy thử giải thích vì sao nhé!';
+      feedback.style.color='#a85b20';
+    }
+  }));
+  let remaining=25*60, interval=null;
+  const display=document.getElementById('timerDisplay');
+  const start=document.getElementById('timerStart');
+  const reset=document.getElementById('timerReset');
+  function render(){
+    display.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
+  }
+  start.addEventListener('click',()=>{
+    if(interval){clearInterval(interval);interval=null;start.textContent='Tiếp tục';return;}
+    start.textContent='Tạm dừng';
+    interval=setInterval(()=>{
+      remaining--;render();
+      if(remaining<=0){
+        clearInterval(interval);interval=null;start.textContent='Bắt đầu lại';
+        display.textContent='00:00';
+        feedback.textContent='Hoàn thành một phiên tập trung — nghỉ ngắn rồi tiếp tục nhé!';
+        feedback.style.color='#087c66';
+      }
+    },1000);
+  });
+  reset.addEventListener('click',()=>{
+    if(interval){clearInterval(interval);interval=null;}
+    remaining=25*60;render();start.textContent='Bắt đầu';
+  });
+  render();
+})();
+</script>
+
+</body></html>
